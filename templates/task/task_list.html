@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h1>
+      TODO list
+      <a href="{% url 'task:task-create' %}" class="btn btn-primary link-to-page">
+        Add task
+      </a>
+    </h1>
+    <form action="" method="get" class="form-inline">
+        {{search_form.as_p}}
+        <input  type="submit" value="Submit">
+    </form>
+
+    {% if task_list %}
+
+    {% for task in task_list %}
+      <h4>{{ task.content }}</h4> <p style="color:red">{{ task.state_task}}</p>
+
+        <p>Created: {{ tasks.created_datetime }}</p>
+        <h5>Tag</h5><p>{{ task.tag.name }}</p>
+    {% endfor %}
+
+    {% else %}
+      <p>There are no tasks. </p>
+    {% endif %}
+{% endblock %}
+
+
