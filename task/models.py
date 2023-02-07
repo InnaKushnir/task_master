@@ -11,17 +11,14 @@ class Tag(models.Model):
 
 class Task(models.Model):
 
-    class Meta:
-        ordering = ["state_task", "create_datetime"]
-
     content = models.CharField(max_length=255)
     create_datetime = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField(blank=True)
     state_task = models.BooleanField()
     tags = models.ManyToManyField(Tag, related_name="tasks")
 
+    class Meta:
+        ordering = ["state_task", "create_datetime"]
+
     def __str__(self):
-        return f"{self.content} {self.tags} {self.state_task}"
-
-
-
+        return f"{self.content}  {self.create_datetime}  {self.tags}  {self.state_task}"

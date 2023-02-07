@@ -1,10 +1,16 @@
-from django.conf.urls.static import static
-from django.contrib import admin
-from django.urls import path, include
 
-from app import settings
-from task.views import TaskListView, TagListView, TagCreateView, TagUpdateView, TagDeleteView, TaskCreateView, \
-    TaskUpdateView, TaskDeleteView
+from django.urls import path
+
+from task.views import (
+    TagListView,
+    TagCreateView,
+    TagUpdateView,
+    TagDeleteView,
+    TaskCreateView,
+    TaskUpdateView,
+    TaskDeleteView,
+    TaskListView,
+)
 
 urlpatterns = [
     path("tasks/", TaskListView.as_view(), name="task-list"),

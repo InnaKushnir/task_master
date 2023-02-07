@@ -4,22 +4,41 @@
 {% block content %}
     <h1>
       TODO list
-      <a href="{% url 'task:task-create' %}" class="btn btn-primary link-to-page">
+      <a href="{% url 'task:task-create' %}" class="btn btn-primary link-to-page" style="float: right">
         Add task
       </a>
     </h1>
-    <form action="" method="get" class="form-inline">
-        {{search_form.as_p}}
-        <input  type="submit" value="Submit">
-    </form>
 
     {% if task_list %}
 
     {% for task in task_list %}
-      <h4>{{ task.content }}</h4> <p style="color:red">{{ task.state_task}}</p>
+        <div class="d-flex justify-content-left">
+          <h4>{{ task.content }}</h4>
+          {% if task.state_task %}
+            <h4>
+              <p style="color:red ">Done</p>
+            </h4>
+          {% else %}
+            <h4>
+              <p style="color:red ">Not Done</p>
+            </h4>
+          {% endif %}
+        </div>
+        <p> Created: {{ task.create_datetime }}</p>
+        <div class="d-flex justify-content-left">
+          <h5>Tags :</h5>
+          {% for tag in task.tags.all %}
+            <p>{{ tag }},  </p>
+          {% endfor %}
+              <a href="{% url 'task:task-update' pk=task.id %}" >
+                Update
+              </a>
+              <a href="{% url 'task:task-delete' pk=task.id %}" >
+                Delete
+              </a>
+        </div>
 
-        <p>Created: {{ tasks.created_datetime }}</p>
-        <h5>Tag</h5><p>{{ task.tag.name }}</p>
+      <br>
     {% endfor %}
 
     {% else %}
