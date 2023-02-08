@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "django.contrib.staticfiles",
     "debug_toolbar",
+    "crispy_forms",
     "task",
 ]
 
@@ -70,6 +71,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 WSGI_APPLICATION = "app.wsgi.application"
 

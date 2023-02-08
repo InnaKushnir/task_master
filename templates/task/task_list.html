@@ -9,36 +9,55 @@
       </a>
     </h1>
 
+
     {% if task_list %}
 
     {% for task in task_list %}
-        <div class="d-flex justify-content-left">
-          <h4>{{ task.content }}</h4>
-          {% if task.state_task %}
-            <h4>
-              <p style="color:red ">Done</p>
-            </h4>
-          {% else %}
-            <h4>
-              <p style="color:red ">Not Done</p>
-            </h4>
-          {% endif %}
+        <hr>
+        <div class="d-flex justify-content-between">
+            <div class="d-flex ">
+              <h4>{{ task.content }}</h4>
+              <div style="margin-left:10px">
+              {% if task.state_task %}
+                  <h4>
+                    <p style="color:green" style="margin-left: 10px">Done</p>
+                  </h4>
+                {% else %}
+                  <h4>
+                    <p style="color:red" style="margin-left: 10px">Not Done</p>
+                  </h4>
+                {% endif %}
+                </div>
+            </div>
+
+            <div>
+              {% if task.state_task %}
+
+                <a href="{% url 'task:partial-update-task' pk=task.id %}" class="btn btn-success link-to-page"  >
+                  Complete
+                </a>
+              {% else %}
+                <a  href="{% url 'task:partial-update-task' pk=task.id %}" class="btn btn-secondary link-to-page" >
+                  Undo
+                </a>
+              {% endif %}
+            </div>
         </div>
         <p> Created: {{ task.create_datetime }}</p>
-        <div class="d-flex justify-content-left">
-          <h5>Tags :</h5>
+        <div class="d-flex ">
+          <h5>Tags   :</h5>
           {% for tag in task.tags.all %}
-            <p>{{ tag }},  </p>
+            <p style="margin-right: 10px">{{ tag }} </p>
           {% endfor %}
               <a href="{% url 'task:task-update' pk=task.id %}" >
                 Update
               </a>
-              <a href="{% url 'task:task-delete' pk=task.id %}" >
+              <p style="margin-right: 10px"><a href="{% url 'task:task-delete' pk=task.id %}" ></p>
                 Delete
               </a>
         </div>
 
-      <br>
+
     {% endfor %}
 
     {% else %}
