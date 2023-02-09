@@ -1,5 +1,5 @@
 #  ToDoList-project
-Django project ToDoList
+ToDoList project is an application specially built to keep track of errands or tasks that need to be done. This application will be like a task keeper where the user would be able to enter the tasks that they need to do. Once they are done with their tasks they can also remove them from the list
 
 
 #### Features
@@ -23,9 +23,9 @@ Django project ToDoList
 ##### Python3 must be already installed.
 
 ```
-git clone https://github.com/InnaKuhsnir/taxi-project
+git clone https://github.com/InnaKuhsnir/to-do-list
 
-cd taxi_project
+cd to-do-list
 
 python -m venv venv
 
@@ -33,5 +33,21 @@ source venv/bin/activate
 
 pip install -r requirements.txt
 
+python manage.py migrate
+
 python manage.py runserver 
+```
+
+##### Create .env file with values:
+
+```
+DB_HOST=<your db hostname>
+
+DB_NAME=<your db name>
+
+DB_USER=<your db username>
+
+DB_PASSWORD=<your db user password>
+
+DJANGO_SECRET_KEY=<your django secret key>
 ```
