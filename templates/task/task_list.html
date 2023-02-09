@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-
 {% block content %}
     <h1>
       TODO list
@@ -8,7 +7,6 @@
         Add task
       </a>
     </h1>
-
 
     {% if task_list %}
 
@@ -43,7 +41,7 @@
               {% endif %}
             </div>
         </div>
-        <p> Created: {{ task.create_datetime }}</p>
+        <p> Created: {{ task.create_datetime }} </p>
         <div class="d-flex ">
           <h5>Tags   :</h5>
           {% for tag in task.tags.all %}
@@ -57,12 +55,9 @@
               </a>
         </div>
 
-
     {% endfor %}
 
     {% else %}
       <p>There are no tasks. </p>
     {% endif %}
 {% endblock %}
-
-

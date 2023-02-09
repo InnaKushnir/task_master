@@ -14,8 +14,7 @@ class TaskForm(forms.ModelForm):
         queryset=Tag.objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
+
     class Meta:
         model = Task
         fields = "__all__"
-
-

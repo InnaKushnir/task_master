@@ -21,4 +21,4 @@ class Task(models.Model):
         ordering = ["state_task", "-create_datetime"]
 
     def __str__(self):
-        return f"{self.content}  {self.create_datetime}  {self.tags}  {self.state_task}"
+        return f"{self.content}  {self.create_datetime}  {self.tags}  {self.state_task} {self.deadline}"

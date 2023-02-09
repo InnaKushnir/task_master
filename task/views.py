@@ -1,7 +1,8 @@
+from datetime import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -15,13 +16,10 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(TaskListView, self).get_context_data(**kwargs)
         context["task_list"] = Task.objects.all()
-
         return context
 
     def get_queryset(self):
-
         queryset = Task.objects.all()
-
         return queryset
 
 
