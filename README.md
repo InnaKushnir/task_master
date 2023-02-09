@@ -13,7 +13,11 @@ Django project ToDoList
 * User: `admin`
 
 * Password: `2105Inna75`
+* 
+#### Demo
+![ToDoList_project](static/img/photo_5415720814571013236_w.jpg)
 
+![ToDoList_project](static/img/photo_5415720814571013236_w.jpg)
 
 #### Installation
 ##### Python3 must be already installed.
