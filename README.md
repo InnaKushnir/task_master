@@ -33,9 +33,9 @@ source venv/bin/activate
 
 pip3 install -r requirements.txt
 
-python manage.py migrate
+pytho3 manage.py migrate
 
-python manage.py runserver 
+python3 manage.py runserver 
 ```
 
 ##### Create .env file with values:
