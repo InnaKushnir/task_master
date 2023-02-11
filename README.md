@@ -37,17 +37,3 @@ python3 manage.py migrate
 
 python3 manage.py runserver 
 ```
-
-##### Create .env file with values:
-
-```
-DB_HOST=<your db hostname>
-
-DB_NAME=<your db name>
-
-DB_USER=<your db username>
-
-DB_PASSWORD=<your db user password>
-
-DJANGO_SECRET_KEY=<your django secret key>
-```
