@@ -16,7 +16,7 @@
             <div class="d-flex ">
               <h4>{{ task.content }}</h4>
               <div style="margin-left:10px">
-              {% if task.state_task %}
+              {% if task.is_task %}
                   <h4>
                     <p style="color:green" style="margin-left: 10px">Done</p>
                   </h4>
@@ -29,7 +29,7 @@
             </div>
 
             <div>
-              {% if task.state_task %}
+              {% if task.is_task %}
 
                 <a href="{% url 'task:partial-update-task' pk=task.id %}" class="btn btn-success link-to-page"  >
                   Complete

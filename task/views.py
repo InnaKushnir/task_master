@@ -15,7 +15,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(TaskListView, self).get_context_data(**kwargs)
-        context["task_list"] = Task.objects.all()
+        context["task_list"] = Task.objects.all().prefetch_related("tags")
         return context
 
     def get_queryset(self):
@@ -64,7 +64,7 @@ class TagUpdateView(LoginRequiredMixin, generic.UpdateView):
 @login_required
 def task_partial_update_view(request, pk: int):
     task = Task.objects.get(id=pk)
-    task.state_task = not task.state_task
+    task.is_task = not task.is_task
     task.save()
 
     return HttpResponseRedirect(reverse_lazy("task:task-list"))
