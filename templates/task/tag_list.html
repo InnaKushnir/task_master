@@ -3,7 +3,7 @@
 {% block content %}
   <h1>
     Tags
-    <a href="{% url 'task:tag-create' %}" class="btn btn-primary link-to-page" style="float: right">
+    <a href="{% url 'todo:tag-create' %}" class="btn btn-primary link-to-page" style="float: right">
       Add
     </a>
   </h1>
@@ -24,12 +24,12 @@
                 {{ tag.name }}
             </td>
             <td>
-              <a href="{% url 'task:tag-update' pk=tag.id %}" class="btn btn-secondary">
+              <a href="{% url 'todo:tag-update' pk=tag.id %}" class="btn btn-secondary">
                 Update
               </a>
             </td>
             <td>
-              <a href="{% url 'task:tag-delete' pk=tag.id %}" class="btn btn-secondary">
+              <a href="{% url 'todo:tag-delete' pk=tag.id %}" class="btn btn-secondary">
                 Delete
               </a>
             </td>

@@ -1,6 +1,6 @@
 from django import forms
 
-from task.models import Task, Tag
+from todo.models import Task, Tag
 
 
 class TagForm(forms.ModelForm):

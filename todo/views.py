@@ -1,4 +1,3 @@
-from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -6,8 +5,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from task.form import TagForm, TaskForm
-from task.models import Task, Tag
+from todo.form import TagForm, TaskForm
+from todo.models import Task, Tag
 
 
 class TaskListView(LoginRequiredMixin, generic.ListView):
@@ -26,18 +25,18 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     model = Task
     form_class = TaskForm
-    success_url = reverse_lazy("task:task-list")
+    success_url = reverse_lazy("todo:task-list")
 
 
 class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Task
-    success_url = reverse_lazy("task:task-list")
+    success_url = reverse_lazy("todo:task-list")
 
 
 class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Task
     form_class = TaskForm
-    success_url = reverse_lazy("task:task-list")
+    success_url = reverse_lazy("todo:task-list")
 
 
 class TagListView(LoginRequiredMixin, generic.ListView):
@@ -47,18 +46,18 @@ class TagListView(LoginRequiredMixin, generic.ListView):
 class TagCreateView(LoginRequiredMixin, generic.CreateView):
     model = Tag
     form_class = TagForm
-    success_url = reverse_lazy("task:tag-list")
+    success_url = reverse_lazy("todo:tag-list")
 
 
 class TagDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Tag
-    success_url = reverse_lazy("task:tag-list")
+    success_url = reverse_lazy("todo:tag-list")
 
 
 class TagUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Tag
     form_class = TagForm
-    success_url = reverse_lazy("task:tag-list")
+    success_url = reverse_lazy("todo:tag-list")
 
 
 @login_required
@@ -67,4 +66,4 @@ def task_partial_update_view(request, pk: int):
     task.is_task = not task.is_task
     task.save()
 
-    return HttpResponseRedirect(reverse_lazy("task:task-list"))
+    return HttpResponseRedirect(reverse_lazy("todo:task-list"))
