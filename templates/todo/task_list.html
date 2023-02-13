@@ -28,18 +28,19 @@
                 </div>
             </div>
 
-            <div>
+            <form method="post" action="{% url 'todo:partial-update-task' pk=task.id %}">
+              {% csrf_token %}
               {% if task.is_task %}
 
-                <a href="{% url 'todo:partial-update-task' pk=task.id %}" class="btn btn-success link-to-page"  >
+                <button class="btn btn-success link-to-page" >
                   Complete
-                </a>
+                </button>
               {% else %}
-                <a  href="{% url 'todo:partial-update-task' pk=task.id %}" class="btn btn-secondary link-to-page" >
+                <button class="btn btn-secondary link-to-page" >
                   Undo
-                </a>
+                </button>>
               {% endif %}
-            </div>
+            </form>
         </div>
         <p> Created: {{ task.create_datetime }} </p>
         <div class="d-flex ">

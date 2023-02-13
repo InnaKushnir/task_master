@@ -63,11 +63,10 @@ class TagUpdateView(LoginRequiredMixin, generic.UpdateView):
 class TaskPartialUpdateView(LoginRequiredMixin, generic.View):
     model = Task
 
-    @staticmethod
-    def get(request, **kwargs):
-
+    def post(self, request, **kwargs):
         task = get_object_or_404(Task, pk=kwargs["pk"])
         task.is_task = not task.is_task
+
         task.save()
 
         return redirect("todo:task-list")
