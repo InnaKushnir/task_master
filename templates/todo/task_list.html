@@ -3,7 +3,7 @@
 {% block content %}
     <h1>
       TODO list
-      <a href="{% url 'task:task-create' %}" class="btn btn-primary link-to-page" style="float: right">
+      <a href="{% url 'todo:task-create' %}" class="btn btn-primary link-to-page" style="float: right">
         Add task
       </a>
     </h1>
@@ -31,11 +31,11 @@
             <div>
               {% if task.is_task %}
 
-                <a href="{% url 'task:partial-update-task' pk=task.id %}" class="btn btn-success link-to-page"  >
+                <a href="{% url 'todo:partial-update-task' pk=task.id %}" class="btn btn-success link-to-page"  >
                   Complete
                 </a>
               {% else %}
-                <a  href="{% url 'task:partial-update-task' pk=task.id %}" class="btn btn-secondary link-to-page" >
+                <a  href="{% url 'todo:partial-update-task' pk=task.id %}" class="btn btn-secondary link-to-page" >
                   Undo
                 </a>
               {% endif %}

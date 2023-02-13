@@ -1,7 +1,7 @@
 
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -60,10 +60,13 @@ class TagUpdateView(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy("todo:tag-list")
 
 
-@login_required
-def task_partial_update_view(request, pk: int):
-    task = Task.objects.get(id=pk)
-    task.is_task = not task.is_task
-    task.save()
+class TaskPartialUpdateView(LoginRequiredMixin, generic.View):
+    model = Task
 
-    return HttpResponseRedirect(reverse_lazy("todo:task-list"))
+    def get(self, request, *args, **kwargs):
+
+        task = get_object_or_404(Task, pk=kwargs["pk"])
+        task.is_task = not task.is_task
+        task.save()
+
+        return redirect("todo:task-list")
